@@ -14,11 +14,11 @@ function create_payment(mp_manager, res, title, quantity, currency_id, unit_pric
       identification: {},
       address: {}
     },*/
-    notification_url: `${config.url.webhook_notification}/api/payment/webhook_notification`,
+    notification_url: `${config.url}/api/payment/webhook_notification`,
     back_urls: {
-      success: config.url.success_back,
-      pending: config.url.cancel_back,
-      failure: config.url.failure_back
+      success: `${config.url}/api/payment/success`,
+      pending: `${config.url}/api/payment/pending`,
+      failure: `${config.url}/api/payment/error`
     }
   };
 
