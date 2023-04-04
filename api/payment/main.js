@@ -1,5 +1,5 @@
 function create_payment(mp_manager, req, title, quantity, currency_id, unit_price){
-    
+
     var preference = {
         items: [
           {
@@ -11,7 +11,8 @@ function create_payment(mp_manager, req, title, quantity, currency_id, unit_pric
         ]
       };
       
-      mp_manager.preferences.create(preference);
+      var obj_pay = mp_manager.preferences.create(preference);
+      console.log(obj_pay);
 }
 
 module.exports = {

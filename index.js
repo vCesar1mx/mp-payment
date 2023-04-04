@@ -27,7 +27,7 @@ app.post('/api/payment/:process', (req, res) => {
     switch (process) {
         case 'create':
             console.log(req.body);
-            if (req.body.length != 4) {
+            if (req.body.length !== 4) {
                 {
                     return res.jsonp({
                         message: "Error: You need at least 4 parameters",
