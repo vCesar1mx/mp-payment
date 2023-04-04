@@ -2,7 +2,6 @@ const config = require('./config.json');
 var mp_manager = require('mercadopago');
 mp_manager.configure({
     access_token: config.access_token,
-    sandbox: true
 });
 // Libraries
 const express = require('express');
@@ -55,6 +54,7 @@ app.post('/api/payment/:process', (req, res) => {
             mp.create_payment(mp_manager, res, title, quantity, currency_id, unit_price);
             break;
         case 'get':
+            var id = req.body.id;
             mp.get_payment(mp_manager, res, id);
             break;
         default:
