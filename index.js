@@ -54,11 +54,8 @@ app.post('/api/payment/:process', (req, res) => {
             var unit_price = req.body.unit_price;
             mp.create_payment(mp_manager, res, title, quantity, currency_id, unit_price);
             break;
-        case 'retrieve':
-
-            break;
-        case 'capture':
-
+        case 'get':
+            mp.get_payment(mp_manager, res, id);
             break;
         default:
             break;

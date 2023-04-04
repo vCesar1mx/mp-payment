@@ -17,6 +17,13 @@ function create_payment(mp_manager, res, title, quantity, currency_id, unit_pric
 
 }
 
+function get_payment(mp_manager, res, id) {
+  mp_manager.preferences.get(id).then(function (data) {
+    console.dir(data)
+  })
+}
+
 module.exports = {
-  create_payment: create_payment
+  create_payment: create_payment,
+  get_payment: get_payment
 }
