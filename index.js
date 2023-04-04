@@ -1,7 +1,8 @@
 const config = require('./config.json');
 var mp_manager = require('mercadopago');
 mp_manager.configure({
-    access_token: config.access_token
+    access_token: config.access_token,
+    sandbox: true
 });
 // Libraries
 const express = require('express');
