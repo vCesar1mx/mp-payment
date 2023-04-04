@@ -16,7 +16,7 @@ const mp = require('./api/payment/main.js');
 // Configuración de Morgan y Compression
 app.use(morgan('dev'));
 app.use(compression());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Rutas de la aplicación
 app.get('/', (req, res) => {
@@ -26,8 +26,8 @@ app.post('/api/payment/:process', (req, res) => {
     var process = req.params.process;
     switch (process) {
         case 'create':
-            console.log(req.body);
-            if (req.body.length !== 4) {
+            console.log(req.body.length);
+            if (req.body.title === undefined || req.body.quantity === undefined || req.body.currency_id === undefined || req.body.unit_price === undefined) {
                 {
                     return res.jsonp({
                         message: "Error: You need at least 4 parameters",
