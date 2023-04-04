@@ -1,6 +1,7 @@
+const config = require('./config.json');
 var mp_manager = require('mercadopago');
 mp_manager.configure({
-    access_token: 'YOUR_ACCESS_TOKEN'
+    access_token: config.access_token
 });
 // Libraries
 const express = require('express');
@@ -12,6 +13,7 @@ const bodyParser = require('body-parser');
 
 //Process Functions
 const mp = require('./api/payment/main.js');
+const { access } = require('fs');
 
 // Configuración de Morgan y Compression
 app.use(morgan('dev'));
@@ -26,7 +28,7 @@ app.post('/api/payment/:process', (req, res) => {
     var process = req.params.process;
     switch (process) {
         case 'create':
-            console.log(req.body.length);
+            console.log(req.body);
             if (req.body.title === undefined || req.body.quantity === undefined || req.body.currency_id === undefined || req.body.unit_price === undefined) {
                 {
                     return res.jsonp({
@@ -49,7 +51,7 @@ app.post('/api/payment/:process', (req, res) => {
             var quantity = req.body.quantity;
             var currency_id = req.body.currency_id;
             var unit_price = req.body.unit_price;
-            mp.create_payment(mp_manager, req, title, quantity, currency_id, unit_price);
+            mp.create_payment(mp_manager, res, title, quantity, currency_id, unit_price);
             break;
         case 'retrieve':
 
